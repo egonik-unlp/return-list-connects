@@ -4,7 +4,6 @@ use axum::{
     routing::get,
     Router,
 };
-use axum_macros::debug_handler;
 use std::net::SocketAddr;
 use tokio::sync::Mutex;
 
@@ -37,7 +36,6 @@ async fn clear(State(state): State<Arc<Mutex<Vec<String>>>>) -> String {
     format!("{:#?}", inner)
 }
 
-#[debug_handler]
 async fn log(
     State(state): State<Arc<Mutex<Vec<String>>>>,
     ConnectInfo(connect_addr): ConnectInfo<SocketAddr>,
